@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<style type="text/css">
+		.imgload{margin-top: 10px;}
+		.imgload span{display: inline-block;*display: inline;*zoom: 1;width: 155px;text-align: right;vertical-align: top;color: #666}
+		.imgload img{width: 200px;height: 150px;}
+		.imgload a{display: inline-block;*display: inline;*zoom: 1;width: 200px;height: 150px;}
+		.imgload input{display: none;}
+	</style>
+	<script type="text/javascript">	
+		$(function(){
+			$("#imgWrap").click(function(){
+			   $("#file").trigger("click");
+			});
+			$("#file").change(function(){
+				console.log($(this))
+		        var file =$(this)[0].files[0];
+		        console.log(file)
+		        var file_size = $(this)[0].files[0].size;
+		        var size = file_size / 1024;
+		        if (!/\.(gif|jpg|jpeg|png|GIF|JPG|JPEG|PNG)$/.test(file.name)) {		        	
+			     	alert("图片格式不正确，仅支持jpg,jpeg,gif,png");
+			     	return false;
+		    	}else if(size > 2048){		    		
+		   			alert("上传的文件大小不能超过2M！");
+		   			return false;
+		  		}else{		    		
+		    		//上传图片并回显
+		    	}			
+			});
+		});			
+	</script>
+</head>
+<body style="background-color:#fff;">		
+	<div class="imgload"><span>图片上传：</span><a href="javascript:void(0)" id="imgWrap"><img src="wnpassport.png" alt=""></a><input type="file" id="file"></div>
+</body>
+</html>
